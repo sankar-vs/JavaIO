@@ -8,4 +8,6 @@
 ### Used Case:4
 #### Create an Employee Payroll Service to store Employee Payroll into a File
 ### Used Case:5
-#### Ability for Employee Payroll Serivce to print the Employee Payrolls
+#### Ability for Employee Payroll Service to print the Employee Payrolls
+### Used Case:6
+#### Ability for Employee Payroll Service to read the Employee Payroll File so that some analysis can be performed

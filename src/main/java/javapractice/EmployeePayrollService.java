@@ -8,6 +8,8 @@ public class EmployeePayrollService {
     public enum IOService {CONSOLE_IO, FILE_IO, DB_IO, REST_IO}
     private List<EmployeePayrollData> employeePayrollList;
 
+    public EmployeePayrollService() {}
+
     public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList){
         this.employeePayrollList = employeePayrollList;
     }
@@ -20,6 +22,12 @@ public class EmployeePayrollService {
         System.out.println("Enter Salary: ");
         double salary = consoleInputReader.nextInt();
         employeePayrollList.add(new EmployeePayrollData(id, name, salary));
+    }
+
+    public long readEmployeePayrollData(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO))
+            this.employeePayrollList = new EmployeePayrollFileIOService().readData();
+        return employeePayrollList.size();
     }
 
     public void writeEmployeePayrollData(IOService ioService) {
