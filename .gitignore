@@ -3,8 +3,6 @@
 build
 gradle
 **/main/resources
-**/test
-test
 build.gradle
 gradlew
 gradlew.bat
