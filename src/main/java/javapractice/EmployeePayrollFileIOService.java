@@ -14,13 +14,13 @@ public class EmployeePayrollFileIOService {
 
     public void write(List<EmployeePayrollData> employeePayrollList) {
         StringBuffer empBuffer = new StringBuffer();
-        employeePayrollList.forEach(employee ->{
+        employeePayrollList.forEach(employee -> {
             String empDataString = employee.toString().concat("\n");
             empBuffer.append(empDataString);
         });
         try {
-            Files.write(Paths.get(PAYROLL_FILE_NAME),empBuffer.toString().getBytes());
-        }catch (IOException x){
+            Files.write(Paths.get(PAYROLL_FILE_NAME), empBuffer.toString().getBytes());
+        } catch (IOException x) {
             x.printStackTrace();
         }
     }
@@ -29,7 +29,7 @@ public class EmployeePayrollFileIOService {
         try {
             Files.lines(new File(PAYROLL_FILE_NAME).toPath())
                     .forEach(System.out::println);
-        }catch (IOException x){
+        } catch (IOException x) {
             x.printStackTrace();
         }
     }
@@ -39,7 +39,7 @@ public class EmployeePayrollFileIOService {
         try {
             entries = Files.lines(new File(PAYROLL_FILE_NAME).toPath())
                     .count();
-        }catch (IOException x){
+        } catch (IOException x) {
             x.printStackTrace();
         }
         return entries;
@@ -54,7 +54,7 @@ public class EmployeePayrollFileIOService {
             for (String line : lines) {
                 String[] value = new String[3];
                 String[] details = line.split(",");
-                for (int i = 0 ; i < details.length ; i++ ) {
+                for (int i = 0; i < details.length; i++) {
                     String[] obj = details[i].split(":");
                     value[i] = obj[1];
                 }
@@ -63,7 +63,8 @@ public class EmployeePayrollFileIOService {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            }
+        }
         return employeePayrollList;
-    }}
+    }
+}
 
