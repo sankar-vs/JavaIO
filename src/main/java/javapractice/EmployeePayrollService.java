@@ -16,11 +16,11 @@ public class EmployeePayrollService {
 
     private void readEmployeePayrollData(Scanner consoleInputReader) {
         System.out.println("Enter id: ");
-        int id = consoleInputReader.nextInt();
+        String id = consoleInputReader.next();
         System.out.println("Enter Name: ");
         String name = consoleInputReader.next();
         System.out.println("Enter Salary: ");
-        double salary = consoleInputReader.nextInt();
+        String salary = consoleInputReader.next();
         employeePayrollList.add(new EmployeePayrollData(id, name, salary));
     }
 
