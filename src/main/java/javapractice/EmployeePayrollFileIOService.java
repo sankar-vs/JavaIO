@@ -6,11 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class EmployeePayrollFileIOService {
-    public static String PAYROLL_FILE_NAME = "payroll-file.txt";
+    public static String PAYROLL_FILE_NAME = "src/test/resources/payroll-file.txt";
 
     public void write(List<EmployeePayrollData> employeePayrollList) {
         StringBuffer empBuffer = new StringBuffer();
@@ -48,17 +49,17 @@ public class EmployeePayrollFileIOService {
     public List<EmployeePayrollData> readData() {
         List<EmployeePayrollData> employeePayrollList = new ArrayList<>();
         try {
-            List<String> lines = Files.lines(new File("payroll-file.txt").toPath())
+            List<String> lines = Files.lines(new File(PAYROLL_FILE_NAME).toPath())
                     .map(line -> line.trim())
                     .collect(Collectors.toList());
             for (String line : lines) {
                 String[] value = new String[3];
-                String[] details = line.split(",");
-                for (int i = 0; i < details.length; i++) {
-                    String[] obj = details[i].split(":");
-                    value[i] = obj[1];
+                String[] details = line.split(" ");
+                for (int i = 1, j = 0; i < details.length; i = i + 3) {
+                    value[j] = details[i];
+                    j++;
                 }
-                EmployeePayrollData employeePayrollData = new EmployeePayrollData(value[0], value[1], value[2]);
+                EmployeePayrollData employeePayrollData = new EmployeePayrollData(Integer.parseInt(value[0]), value[1], Double.parseDouble(value[2]));
                 employeePayrollList.add(employeePayrollData);
             }
         } catch (IOException e) {

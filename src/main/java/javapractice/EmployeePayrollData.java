@@ -1,11 +1,11 @@
 package javapractice;
 
 public class EmployeePayrollData {
-    String id;
+    int id;
     String name;
-    String salary;
+    Double salary;
 
-    public EmployeePayrollData(String id, String name, String salary) {
+    public EmployeePayrollData(int id, String name, Double salary) {
         this.id = id;
         this.name = name;
         this.salary = salary;
